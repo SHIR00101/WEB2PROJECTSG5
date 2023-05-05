@@ -1,0 +1,513 @@
+/*=============== Google Fonts ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+/*=============== Css Universal Selector ===============*/
+* 
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    user-select: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+html 
+{
+    font-size: 10px; /* Here 10px = 1rem; */ 
+} 
+
+
+/*=============== Css Variable ===============*/ 
+:root
+{
+    /*=============== colors ===============*/  
+    --body-color: linear-gradient(to right, #ccd9ff, #cce0ff);
+    --container-color: linear-gradient(to right bottom, rgba(255,255,255,.5), rgba(255,255,255,.4));
+    --f1-color: #000;
+    --f2-color: #808080;
+    --f3-color: #fff;
+    --f4-color: #009933;
+    --f5-color: #ff66b3;
+    --f6-color: #ff99cc;
+    --f7-color: rgba(104,80,80,0.03);
+    --f8-color: rgba(104,80,80,0.05);
+    --f9-color: #bb99ff;
+    --f10-color: #c2d6d6;
+
+    /*=============== font sizes ===============*/ 
+    --xxl-fs: 3.5rem;
+    --xl-fs: 2.8rem;
+    --l-fs: 2.5rem;
+    --m-fs: 2.2rem;
+    --s-fs: 2rem;
+    --xs-fs: 1.8rem;
+    --h1-fs: 1.6rem;
+    --h2-fs: 1.4rem;
+    --text1-fs: 1.2rem;
+    --text2-fs: 1.1rem;
+    --text3-fs: 1rem;
+    --text4-fs: 2.4rem; 
+
+    /*=============== font Weight ===============*/
+    --normal-fw: 300;
+    --medium-fw: 500;
+    --bold-fw: 700;  
+
+    /*=============== Padding ===============*/  
+    --pd-0: 0;
+    --pd-2-5: 2.5rem;
+    --pd-2: 2rem;
+    --pd-1-5: 1.5rem;
+    --pd-1: 1rem;
+    --pd-0-8: 0.8rem;
+    --pd-0-6: 0.6rem;
+    --pd-0-5: 0.5rem;
+
+}
+
+
+basePrice:before {
+    content: "Base Price: ";
+    font-weight: bold;
+}
+
+serviceOptions:before {
+    content: "Service Options: ";
+    font-weight: bold;
+}
+
+location:before {
+    content: "Location: ";
+    font-weight: bold;
+}
+
+openingHours:before {
+    content: "Opening Hours: ";
+    font-weight: bold;
+}
+
+googleReviewRatings:before {
+    content: "Google Review Ratings: ";
+    font-weight: bold;
+}
+
+restaurantName {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--body-color);
+}
+
+
+/*============= Container Grid Css =============*/  
+.container
+{
+    width: 85%;
+    height: 85vh;
+    background: var(--container-color);
+    display: grid;
+    grid-template-columns: .2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "sidebar main";
+    gap: 1rem;
+    padding: var(--pd-2-5);
+    border-radius: 3rem;
+    backdrop-filter: blur(2rem);
+    box-shadow: 0 0 5px rgba(255,255,255,.5);
+}
+
+.sidebar
+{
+    grid-area: sidebar; 
+}
+
+.main
+{
+    grid-area: main;
+    background: var(--f3-color);
+}
+
+
+/*============= Main Div Grid Css =============*/ 
+.main
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "header header"
+                         "item item";
+    gap: .5rem;
+    padding: var(--pd-2-5);
+    padding-top: var(--pd-1);
+    padding-bottom: var(--pd-1);
+    border-radius: 3rem;
+    overflow-y: scroll;
+} 
+
+.main::-webkit-scrollbar
+{
+    width: 0;
+}
+
+.main .header
+{
+    grid-area: header;  
+}
+.main .item
+{
+    grid-area: item;
+}
+
+/*============= Sidebar Css =============*/  
+.sidebar
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sidebar .profile
+{
+    text-align: center;
+}
+
+.sidebar .profile img
+{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2rem;
+    border: 3px solid #fff;
+    filter: grayscale(100%);
+}
+
+.sidebar .profile h1
+{
+    text-transform: capitalize;
+    font-weight: var(--bold-fw);
+}
+
+.sidebar ul li .ri
+{
+    font-size: var(--s-fs);
+    background: var(--f3-color);
+    padding: var(--pd-1-5);
+    border-radius: 1.8rem;
+}
+
+.sidebar ul li
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 2rem auto;
+    width: 80%;
+    border-radius: 2rem;
+    transition: .3s;
+}
+
+.sidebar ul li a
+{
+    position: absolute;
+    left: 6.5rem;
+    text-transform: capitalize;
+    color: var(--f1-color);
+    font-weight: var(--bold-fw);
+    font-size: var(--text1-fs);
+}
+
+.sidebar ul .activeLink .ri,
+.sidebar ul li:hover .ri
+{
+    background: var(--f5-color);
+    color: var(--f3-color);
+    border-radius: 1.8rem;
+    transition: .3s;
+}
+
+.sidebar ul .activeLink,
+.sidebar ul li:hover
+{
+    background: var(--f6-color);
+}
+
+.sidebar ul .activeLink a,
+.sidebar ul li:hover a
+{
+    color: var(--f3-color);
+}
+
+.sidebar .card
+{
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    width: 85%;
+    height: 14.5rem;
+    background: var(--f3-color);
+    border-radius: 3rem;
+}
+
+.sidebar .card img
+{
+    position: absolute;
+    top: -6rem;
+    left: 2rem;
+    width: 11rem;
+    height: 11rem;
+    transition: .3s;
+}
+
+.sidebar .card:hover img
+{
+    transition: .3s;
+    transform: scale(1.1);
+}
+
+.sidebar .card h1
+{
+    position: absolute;
+    left: 2rem;
+    top: 6rem;
+    line-height: 2.5rem;
+    text-transform: capitalize;
+    font-size: var(--m-fs);
+    font-weight: var(--medium-fw);
+    font-family: 'Secular One', sans-serif;
+}
+
+.sidebar .card h2
+{
+    position: absolute;
+    top: 11rem;
+    left: 2rem;
+    font-size: var(--h2-fs);
+    text-transform: capitalize;
+}
+
+.sidebar .card .ri
+{
+    position: absolute;
+    bottom: 1.8rem;
+    right: 2.5rem;
+}
+
+/*============= Header Css =============*/ 
+.header
+{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .greeting
+{
+    position: relative;
+    margin-left: 2.5rem;
+}
+
+.header .greeting h1
+{
+    line-height: 3rem;
+    font-size: var(--l-fs);
+    letter-spacing: .2rem;
+    font-family: 'Secular One',  sans-serif;
+    font-weight: var(--medium-fw);
+}
+
+.header .greeting img
+{
+    border-radius: 50%;
+    position: absolute;
+    top: 3.3rem;
+    left: 10.8rem;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.header .searchbox
+{
+    position: relative;
+    background: var(--f8-color);
+    border-radius: 1rem;
+    padding: var(--pd-0-5);
+}
+
+.header .searchbox input
+{
+    width: 30rem;
+    border: none;
+    outline: none;
+    padding: var(--pd-0-5);
+    padding-left: var(--pd-1-5);
+    background: transparent;
+}
+
+.header .searchbox .ri
+{
+    position: absolute;
+    top: 1.05rem;
+    right: 1rem;
+    font-size: var(--xs-fs);
+    color: var(--f2-color);
+    cursor: pointer;
+}
+.item
+{
+    padding: var(--pd-1); 
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.item .itemHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--pd-1);
+}
+
+.item .itemHeader .tittle
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10rem;
+}
+
+.item .itemHeader .tittle 
+{
+    text-transform: capitalize;
+    font-size: var(--h1-fs);
+}
+
+.item .itemHeader .tittle .ri
+{
+    font-size: var(--xs-fs);
+    padding: var(--pd-0-8);
+    margin-left: 1rem;
+    border-radius: 1rem;
+    background: var(--f7-color);
+}
+
+.item .box
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-auto-rows: minmax(20rem, max-content);
+    grid-gap: 1rem;
+    grid-row-gap: 4.5rem;
+}
+
+.item .box .itemCard
+{
+    position: relative;
+    top: 4rem;
+    background: var(--f7-color);
+    border-radius: 3rem;
+    transition: .3s;
+} 
+
+.item .box .itemCard:hover
+{
+    background: var(--f8-color);
+}
+
+.item .box .itemCard img
+{
+    position: block;
+    margin-left: 30rem;
+    left: 5rem;
+    top: -4rem;
+    width: 32rem;
+    height: 32rem;
+    transition: .3s;
+}
+
+.item .box .itemCard:hover img
+{
+    transform: scale(1.1);
+}
+
+.item .box .itemCard .Title
+{
+    text-align: center;
+    top: 7rem;
+    left: 2rem;
+    text-transform: capitalize;
+    margin-left: 37rem;
+    padding-bottom: 2rem;
+}
+
+.item .box .itemCard p
+{
+    position: absolute;
+    top: 9.8rem;
+    left: 2rem;
+    font-size: var(--text1-fs);
+    width: 90%;
+}
+
+.item .box .itemCard .price
+{
+    position: absolute;
+    bottom: 1.5rem;
+    left: 2rem;
+    font-size: var(--h1-fs);
+    font-weight: var(--bold-fw);
+    transition: .3s;
+}
+
+.item .box .itemCard:hover .price
+{
+    color: var(--f4-color);
+}
+
+.item .box .itemCard .ri-heart-fill
+{
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-size: var(--h2-fs);
+    border: 1px solid #000;
+    padding: var(--pd-0-8);
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.item .box .itemCard:hover .ri-heart-fill
+{
+    background: var(--f1-color);
+    color: var(--f3-color);
+}
+
+.item::-webkit-scrollbar
+{
+    background: transparent;
+    width: .2rem;
+}
+
+.item::-webkit-scrollbar-thumb
+{
+    background: transparent;
+    border-radius: 3rem;
+}
+
+.item:hover::-webkit-scrollbar-thumb
+{
+    background: var(--body-color);
+}
+
